@@ -1,0 +1,57 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.test
+.env.production.local
+
+# Logs
+logs
+*.log
+logs/*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build output
+dist/
+build/
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# REPL history
+.node_repl_history
+
+# IDEs and editors
+.idea/
+.vscode/
+*.sublime-workspace
+
+# TypeScript
+*.tsbuildinfo
+
+# Optional lock files (choose based on your package manager)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+/src/generated/prisma
