@@ -3,6 +3,7 @@ import { PORT } from "./secrets";
 import rootRouter from "./routes";
 import { PrismaClient } from "./generated/prisma";
 import { errorMiddleware } from "./middlewares/errors";
+import { registerSchema } from "./schema/userSchema";
 
 const app: Express = express();
 
@@ -16,6 +17,21 @@ app.use(errorMiddleware);
 
 export const prismaClient = new PrismaClient({
     log: ['query', 'info', 'warn', 'error'],
+}).$extends({
+    query: {
+        user: {
+            create({
+                args, query
+            }) {
+                try {
+                    args.data = registerSchema.parse(args.data);
+                    return query(args);
+                } catch (error: any) {
+                    throw new Error(`Validation error: ${error.message}`);
+                }
+            }
+        }
+    }
 });
 
 app.listen(PORT, () => {
